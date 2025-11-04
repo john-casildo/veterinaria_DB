@@ -1,0 +1,101 @@
+{
+  "info": {
+    "name": "Test API Collection (Veterinary)",
+    "_postman_id": "test-api-collection-vet",
+    "description": "Colección con endpoints de el módulo veterinario (veterinarios, propietarios, mascotas, citas) + placeholders para migraciones futuras",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "v1.0 - Inicial",
+      "item": [
+        {
+          "name": "Veterinarians",
+          "item": [
+            { "name": "List Veterinarians", "request": { "method": "GET", "url": { "raw": "{{base_url}}/veterinarians", "host": ["{{base_url}}"], "path": ["veterinarians"] } } },
+            { "name": "Get Veterinarian", "request": { "method": "GET", "url": { "raw": "{{base_url}}/veterinarians/1", "host": ["{{base_url}}"], "path": ["veterinarians","1"] } } },
+            { "name": "Veterinarian Appointments", "request": { "method": "GET", "url": { "raw": "{{base_url}}/veterinarians/1/appointments", "host": ["{{base_url}}"], "path": ["veterinarians","1","appointments"] } } },
+            { "name": "Veterinarian Schedule (by date)", "request": { "method": "GET", "url": { "raw": "{{base_url}}/veterinarians/1/schedule?date=2025-11-03", "host": ["{{base_url}}"], "path": ["veterinarians","1","schedule"], "query": [{"key":"date","value":"2025-11-03"}] } } },
+            { "name": "Create Veterinarian", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"license_number\": \"LIC-12345\",\n  \"first_name\": \"Ana\",\n  \"last_name\": \"Pérez\",\n  \"email\": \"ana.perez@example.com\",\n  \"specialization\": \"Surgery\"\n}" }, "url": { "raw": "{{base_url}}/veterinarians", "host": ["{{base_url}}"], "path": ["veterinarians"] } } },
+            { "name": "Update Veterinarian", "request": { "method": "PUT", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"first_name\": \"Ana\",\n  \"last_name\": \"Pérez Gómez\",\n  \"is_active\": true\n}" }, "url": { "raw": "{{base_url}}/veterinarians/1", "host": ["{{base_url}}"], "path": ["veterinarians","1"] } } },
+            { "name": "Delete Veterinarian", "request": { "method": "DELETE", "url": { "raw": "{{base_url}}/veterinarians/1", "host": ["{{base_url}}"], "path": ["veterinarians","1"] } } }
+          ]
+        },
+        {
+          "name": "Owners",
+          "item": [
+            { "name": "List Owners", "request": { "method": "GET", "url": { "raw": "{{base_url}}/owners", "host": ["{{base_url}}"], "path": ["owners"] } } },
+            { "name": "Get Owner", "request": { "method": "GET", "url": { "raw": "{{base_url}}/owners/1", "host": ["{{base_url}}"], "path": ["owners","1"] } } },
+            { "name": "Owner Pets", "request": { "method": "GET", "url": { "raw": "{{base_url}}/owners/1/pets", "host": ["{{base_url}}"], "path": ["owners","1","pets"] } } },
+            { "name": "Owner Appointments", "request": { "method": "GET", "url": { "raw": "{{base_url}}/owners/1/appointments", "host": ["{{base_url}}"], "path": ["owners","1","appointments"] } } },
+            { "name": "Create Owner", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"first_name\": \"Carlos\",\n  \"last_name\": \"Ruiz\",\n  \"email\": \"carlos.ruiz@example.com\",\n  \"phone\": \"+1-555-1234\"\n}" }, "url": { "raw": "{{base_url}}/owners", "host": ["{{base_url}}"], "path": ["owners"] } } },
+            { "name": "Update Owner", "request": { "method": "PUT", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"phone\": \"+1-555-9999\",\n  \"address\": \"Calle Falsa 123\"\n}" }, "url": { "raw": "{{base_url}}/owners/1", "host": ["{{base_url}}"], "path": ["owners","1"] } } },
+            { "name": "Delete Owner", "request": { "method": "DELETE", "url": { "raw": "{{base_url}}/owners/1", "host": ["{{base_url}}"], "path": ["owners","1"] } } }
+          ]
+        },
+        {
+          "name": "Pets",
+          "item": [
+            { "name": "List Pets", "request": { "method": "GET", "url": { "raw": "{{base_url}}/pets", "host": ["{{base_url}}"], "path": ["pets"] } } },
+            { "name": "Get Pet", "request": { "method": "GET", "url": { "raw": "{{base_url}}/pets/1", "host": ["{{base_url}}"], "path": ["pets","1"] } } },
+            { "name": "Create Pet", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"name\": \"Firulais\",\n  \"species\": \"dog\",\n  \"breed\": \"Labrador\",\n  \"birth_date\": \"2020-06-01\",\n  \"weight\": 12.5,\n  \"owner_id\": 1\n}" }, "url": { "raw": "{{base_url}}/pets", "host": ["{{base_url}}"], "path": ["pets"] } } },
+            { "name": "Update Pet", "request": { "method": "PUT", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"weight\": 13.0\n}" }, "url": { "raw": "{{base_url}}/pets/1", "host": ["{{base_url}}"], "path": ["pets","1"] } } },
+            { "name": "Delete Pet", "request": { "method": "DELETE", "url": { "raw": "{{base_url}}/pets/1", "host": ["{{base_url}}"], "path": ["pets","1"] } } }
+          ]
+        },
+        {
+          "name": "Appointments",
+          "item": [
+            { "name": "List Appointments", "request": { "method": "GET", "url": { "raw": "{{base_url}}/appointments", "host": ["{{base_url}}"], "path": ["appointments"] } } },
+            { "name": "Get Appointment", "request": { "method": "GET", "url": { "raw": "{{base_url}}/appointments/1", "host": ["{{base_url}}"], "path": ["appointments","1"] } } },
+            { "name": "Create Appointment", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"pet_id\": 1,\n  \"veterinarian_id\": 1,\n  \"appointment_date\": \"2025-11-03T10:30:00\",\n  \"reason\": \"Regular checkup\"\n}" }, "url": { "raw": "{{base_url}}/appointments", "host": ["{{base_url}}"], "path": ["appointments"] } } },
+            { "name": "Complete Appointment", "request": { "method": "PUT", "url": { "raw": "{{base_url}}/appointments/1/complete", "host": ["{{base_url}}"], "path": ["appointments","1","complete"] } } },
+            { "name": "Cancel Appointment", "request": { "method": "PUT", "url": { "raw": "{{base_url}}/appointments/1/cancel", "host": ["{{base_url}}"], "path": ["appointments","1","cancel"] } } }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "v2.0 - Post-Migraciones",
+      "description": "Requests that exercise the new schema objects added by migrations: medical_records, vaccines, vaccination-records, invoices, and reports.",
+      "item": [
+        {
+          "name": "Medical Records",
+          "item": [
+            { "name": "List Medical Records", "request": { "method": "GET", "url": { "raw": "{{base_url}}/medical-records", "host": ["{{base_url}}"], "path": ["medical-records"] } } },
+            { "name": "Get Medical Record", "request": { "method": "GET", "url": { "raw": "{{base_url}}/medical-records/1", "host": ["{{base_url}}"], "path": ["medical-records","1"] } } },
+            { "name": "Create Medical Record", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"appointment_id\": 1,\n  \"pet_id\": 1,\n  \"veterinarian_id\": 1,\n  \"notes\": \"Exam and vaccines given\"\n}" }, "url": { "raw": "{{base_url}}/medical-records", "host": ["{{base_url}}"], "path": ["medical-records"] } } }
+          ]
+        },
+        {
+          "name": "Vaccines & Vaccination Records",
+          "item": [
+            { "name": "List Vaccines", "request": { "method": "GET", "url": { "raw": "{{base_url}}/vaccines", "host": ["{{base_url}}"], "path": ["vaccines"] } } },
+            { "name": "Create Vaccine", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"name\": \"Parvovirus\",\n  \"interval_days\": 365\n}" }, "url": { "raw": "{{base_url}}/vaccines", "host": ["{{base_url}}"], "path": ["vaccines"] } } },
+            { "name": "List Vaccination Records", "request": { "method": "GET", "url": { "raw": "{{base_url}}/vaccination-records", "host": ["{{base_url}}"], "path": ["vaccination-records"] } } },
+            { "name": "Create Vaccination Record", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"pet_id\": 1,\n  \"vaccine_id\": 1,\n  \"date_administered\": \"2025-11-03\",\n  \"administered_by\": 1\n}" }, "url": { "raw": "{{base_url}}/vaccination-records", "host": ["{{base_url}}"], "path": ["vaccination-records"] } } }
+          ]
+        },
+        {
+          "name": "Invoices",
+          "item": [
+            { "name": "List Invoices", "request": { "method": "GET", "url": { "raw": "{{base_url}}/invoices", "host": ["{{base_url}}"], "path": ["invoices"] } } },
+            { "name": "Generate Retroactive Invoices (run once)", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"action\": \"retro_generate_from_completed_appointments\"\n}" }, "url": { "raw": "{{base_url}}/invoices/generate-retroactive", "host": ["{{base_url}}"], "path": ["invoices","generate-retroactive"] } } },
+            { "name": "Pay Invoice", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"amount\": 150.00,\n  \"method\": \"cash\"\n}" }, "url": { "raw": "{{base_url}}/invoices/1/pay", "host": ["{{base_url}}"], "path": ["invoices","1","pay"] } } }
+          ]
+        },
+        {
+          "name": "Reports",
+          "item": [
+            { "name": "Revenue Report", "request": { "method": "GET", "url": { "raw": "{{base_url}}/reports/revenue?start_date=2025-10-01&end_date=2025-10-31", "host": ["{{base_url}}"], "path": ["reports","revenue"], "query": [{"key":"start_date","value":"2025-10-01"},{"key":"end_date","value":"2025-10-31"}] } } },
+            { "name": "Popular Veterinarians", "request": { "method": "GET", "url": { "raw": "{{base_url}}/reports/popular-veterinarians", "host": ["{{base_url}}"], "path": ["reports","popular-veterinarians"] } } },
+            { "name": "Vaccination Alerts", "request": { "method": "GET", "url": { "raw": "{{base_url}}/reports/vaccination-alerts", "host": ["{{base_url}}"], "path": ["reports","vaccination-alerts"] } } }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    { "key": "base_url", "value": "http://127.0.0.1:8000" }
+  ]
+}
