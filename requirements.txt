@@ -1,0 +1,18 @@
+fastapi>=0.100.0
+uvicorn[standard]>=0.23.1
+SQLAlchemy==1.4.49
+psycopg2-binary>=2.9.7
+pydantic>=2.1.0
+python-dotenv>=1.0.0
+alembic>=1.10.0
+pytest>=7.0.0
+requests>=2.31.0
+# Optional helpers used or useful during development
+passlib[bcrypt]>=1.7.4
+
+"""
+Notes:
+- Pydantic >=2.1.0 is required because the project uses Pydantic v2 API (ConfigDict/from_attributes=True).
+- SQLAlchemy pinned to 1.4.49 for compatibility with the project's existing models; consider upgrading to SQLAlchemy 2.x and updating ORM usage in a follow-up.
+- Add or remove packages as needed for authentication, background tasks, or testing.
+"""
